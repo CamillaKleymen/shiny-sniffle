@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>About news </title>
 </head>
 <body>
-$END$
+Name of news: {{ news.news_title }}<br>
+Description: {{ news.news_description }}<br>
+Country: {{ news.news_country }}<br>
+Date: {{ news.news_date }}<br>
+
+Category: <a href="/category/ {{ news.news_category.id }}">{{ news.news_category.id }}</a>
+<img src = "{{ news.news_image.url }}" alt = "photo">
 </body>
 </html>

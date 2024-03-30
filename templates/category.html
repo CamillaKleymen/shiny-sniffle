@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Category</title>
 </head>
 <body>
-$END$
+{% for i in news %}
+<a href = "/news/{{ i.id }}"> {{ i.news_title }}</a>
+{% endfor %}
 </body>
 </html>
