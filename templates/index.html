@@ -15,6 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">	
 <!-- bootstrap css -->
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 <!-- style css -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -51,13 +52,13 @@
                       <a class="nav-link" href="about.html">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="services.html">SERVICES</a>
+                      <a class="nav-link" href="allnews.html">ALLNEWS</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
 					  <li class="nav-item">
-                      <a class="nav-link" href="home_page.html">NEWS</a>
+                      <a class="nav-link" href="{% url 'news_page' %}">NEWS</a>
                     </li>
                   </ul>
                 </div>
@@ -71,33 +72,84 @@
 			<h1 class="banner_taital">ONLINE NEWS</h1>
 			<h2 class="free_text">News updated from whole world</h2>
             <div class="read_bt">
-            	<div class="read_text"><a href="#">Read More</a></div>
+            	<div class="read_text"><a href="{% url 'news_page' %}" class="btn btn-primary">See more</a></div>
             </div>
 		</div>
 	</div>
-	<!--banner section end -->
-	<!--bg_main section start -->
-	<div class="container">
-		<div class="bg_main"><img src="images/bg-main.png"></div>
-	</div>
-	<!--bg_main section end -->
-	<div class="row justify-content-center">
-    {% for news_item in news_list %}
-        {% if news_item in page_obj %}
-            <div class="col-md-4">
-                <div class="card" style="width: 50%; height 50%">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ news_item.news_title }}</h5>
-                        <p class="card-text">{{ news_item.news_descriptions }}</p>
-                        <a href="/news/{{ news_item.id }}" class="btn btn-primary">See more</a>
+
+<!--	<div class="row justify-content-center">-->
+<!--    {% for news_item in news_list %}-->
+<!--        {% if news_item in page_obj %}-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="card" >-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">{{ news_item.news_title }}</h5>-->
+<!--                        <p class="card-text">{{ news_item.news_descriptions }}</p>-->
+<!--                        <a href="/news/{{ news_item.id }}" class="btn btn-primary">See more</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+	<!--service section start -->
+<div class="service_section layout_padding">
+    <div class="container">
+        <h1 class="about_text">RECENT NEWS</h1>
+        <div class="service_section_2">
+            <div class="row">
+<!--				<p><label for="id_title">Title:</label> <input type="text" name="title" maxlength="100" required id="id_title"></p>-->
+   				 {% for news in news_list %}
+                <div class="col-sm-12 col-lg-4">
+                    <h1 class="website_text"><h2>{{ news.title }}</h2>
+            		<p>Description: {{ news.description }}</p>
+            		<img src="{{ news.image.url }}" alt="photo"></h1>
+                    <p class="dolor_text">{{ news_item.content }}</p>
+                    <div class="read_bt_main">
+                        <div class="read_text_2"><a href="{% url 'news_page' %}">Read More</a></div>
                     </div>
                 </div>
+				<div class="col-sm-12 col-lg-4">
+                    <h1 class="website_text"><h2>{{ news.title }}</h2>
+            		<p>Description: {{ news.description }}</p>
+            		<img src="{{ news.image.url }}" alt="photo"></h1>
+                    <p class="dolor_text">{{ news_item.content }}</p>
+                    <div class="read_bt_main">
+                        <div class="read_text_2"><a href="allnews.html">Read More</a></div>
+                    </div>
+                </div>
+				<div class="col-sm-12 col-lg-4">
+                    <h1 class="website_text"><h2>{{ news.title }}</h2>
+            		<p>Description: {{ news.description }}</p>
+            		<img src="{{ news.image.url }}" alt="photo"></h1>
+                    <p class="dolor_text">{{ news_item.content }}</p>
+                    <div class="read_bt_main">
+                        <div class="read_text_2"><a href="allnews.html">Read More</a></div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-        {% endif %}
-    {% endfor %}
-</div>
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>News Index</title>-->
+<!--</head>-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1>News Index</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for news_item in news_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--</html>-->
 
-	<!--about section start -->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+	<!--service section end -->
+
 	<div class="about_section">
 		<div class="container">
 			<h1 class="about_text">about web news</h1>
@@ -109,41 +161,16 @@
             </div>
 		</div>
 	</div>
-	<!--about section end -->
-	<!--service section start -->
-	<div class="service_section layout_padding">
-		<div class="container">
-			<h1 class="about_text">services</h1>
-			<p class="ipsum_text">There you can give feedback or leave a note so that optimize our service</p>
-			<div class="service_section_2">
-				<div class="row">
-				    <div class="col-sm-12 col-lg-4">
-				    	<div class="icon_1"><img src="images/icon-1.png"></div>
-				    	<h1 class="website_text">Leave a note about web articles</h1>
-				    	<p class="dolor_text">There you can express your opinion fully anonymously</p>
-						<div class="read_bt_main">
-            				<div class="read_text_2"><a href="#">Leave a note</a></div>
-						</div>
-				    </div>
-				    <div class="col-sm-12 col-lg-4">
-				    	<div class="icon_1"><img src="images/icon-2.png"></div>
-				    	<h1 class="website_text">There you can leave a note about our web design</h1>
-				    	<p class="dolor_text">There you can express your opinion fully anonymously</p>
-						<div class="read_bt_main">
-            				<div class="read_text_2"><a href="#">Leave a note</a></div>
-						</div>
-				    </div>
-			    </div>
-			</div>
-		</div>
-	</div>
-	<!--service section end -->
+
 	<!--contact section start -->
+
+
 	<div class="contact_section layout_padding">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<h1 class="contact_text">Requeste a call back</h1>
+					{{ form.as_p }}
 					<div class="contact_main">
     			        <div class="mail_section">
     			        	<input type="Name" class="mail_text" placeholder="Name" name="Name">

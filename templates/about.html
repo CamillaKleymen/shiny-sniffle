@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">	
 <!-- bootstrap css -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 <!-- style css -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <!-- Responsive-->
@@ -37,7 +37,7 @@
 	<div class="header_section">
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="logo"><a href="index.html"><img src="images/logo.png"></a></div>
+                <div class="logo"><a href="index.html"></a></div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -61,9 +61,6 @@
                     <li class="nav-item">
                       <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
-                    </li>
                   </ul>
                 </div>
             </nav>
@@ -73,38 +70,53 @@
 	<!--about section start -->
 	<div class="about_section layout_padding">
 		<div class="container">
-			<h1 class="about_text">about web elements</h1>
-			<p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore </p>
-			<div class="about_bg"><img src="images/about-bg.png"></div>
-			<p class="lorem_text">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>
-			<div class="read_bt_main">
-            	<div class="read_text_2"><a href="#">Read More</a></div>
-            </div>
+			<h1 class="about_text">about web site and about our idea</h1>
+			<p class="lorem_text">Our venture into the world of news began with a simple yet compelling idea: to create a platform where information flows seamlessly, keeping our readers informed, engaged, and empowered. Here's a glimpse into how we brought this vision to life: </p>
+			<p class="lorem_text">The spark of inspiration ignited when we realized the importance of accessible, reliable news sources in today's fast-paced world. We saw an opportunity to curate and deliver news that matters, shaping conversations and perspectives.</p>
 		</div>
 	</div>
 	<!--about section end -->
+        <div class="contact_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="contact_text">Leave a feedback</h1>
+                     <form method="POST">
+                         {% csrf_token %}
+                         {{ form.as_p }}
+                    <div class="contact_main">
+                        <div class="mail_section">
+                            <body>
+                            <input type="Name" class="mail_text" placeholder="Name" name="Name">
+                            <input type="Name" class="mail_text" placeholder="Email" name="Email">
+                            <input type="Name" class="mail_text" placeholder="Phone" name="Phone">
+                            <textarea class="massage_text" placeholder="Massage" rows="5" id="comment" name="text"></textarea>
+                            <div class="send_bt">
+                                <div class="send_text"><a href="index.html">SEND</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 	<!--footer section start -->
 	<div class="footer_section layout_padding">
 		<div class="container">
-			<div class="footer_main">
-				<div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2">subscribe Now</span>
-                    </div>
-                </div>
-                <h1 class="year_text">2020</h1>
-                <h1 class="landing_text">Free Multipurpose Responsive  Landing Page </h1>
+			<div class="footer_main"
+                <h1 class="year_text">2024</h1>
+                <h1 class="landing_text">Created by Camilla Kleymen </h1>
 			</div>
-			<div class="social_icon">
-				<ul>
-					<li><a href="#"><img src="images/fb-icon.png"></a></li>
-					<li><a href="#"><img src="images/twitter-icon.png"></a></li>
-					<li><a href="#"><img src="images/linkdin-icon.png"></a></li>
-					<li><a href="#"><img src="images/instagram-icon.png"></a></li>
-					<li><a href="#"><img src="images/youtub-icon.png"></a></li>
-				</ul>
-			</div>
+<!--			<div class="social_icon">-->
+<!--				<ul>-->
+<!--					<li><a href="#"><img src="images/fb-icon.png"></a></li>-->
+<!--					<li><a href="#"><img src="images/twitter-icon.png"></a></li>-->
+<!--					<li><a href="#"><img src="images/linkdin-icon.png"></a></li>-->
+<!--					<li><a href="#"><img src="images/instagram-icon.png"></a></li>-->
+<!--					<li><a href="#"><img src="images/youtub-icon.png"></a></li>-->
+<!--				</ul>-->
+<!--			</div>-->
 		</div>
 	</div>
 	<!--footer section end -->
@@ -112,9 +124,6 @@
 	<div class="copyright_section">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
-					<p class="copyright_text">2020 All Rights Reserved Design by <a href="https://html.design/"> Free Html Templates</p>
-				</div>
 			</div>
 		</div>
 	</div>

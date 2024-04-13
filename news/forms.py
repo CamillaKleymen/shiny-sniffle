@@ -1,5 +1,9 @@
 from django import forms
+from .models import News
 
 
-class SearchForm(forms.Form):
-    search_bar = forms.CharField(max_length = 256)
+class NewsForm(forms.ModelForm):
+
+    class Meta:
+        model = News
+        fields = ['title', 'country', 'description']
